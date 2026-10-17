@@ -1,0 +1,379 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+@import "shadcn/tailwind.css";
+@import "@fontsource-variable/inter";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --font-heading: var(--font-sans);
+  --font-sans: "Inter Variable", sans-serif;
+  --color-sidebar-ring: var(--sidebar-ring);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar: var(--sidebar);
+  --color-chart-5: var(--chart-5);
+  --color-chart-4: var(--chart-4);
+  --color-chart-3: var(--chart-3);
+  --color-chart-2: var(--chart-2);
+  --color-chart-1: var(--chart-1);
+  --color-ring: var(--ring);
+  --color-input: var(--input);
+  --color-border: var(--border);
+  --color-destructive: var(--destructive);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-accent: var(--accent);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-muted: var(--muted);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-secondary: var(--secondary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-primary: var(--primary);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-popover: var(--popover);
+  --color-card-foreground: var(--card-foreground);
+  --color-card: var(--card);
+  --color-foreground: var(--foreground);
+  --color-background: var(--background);
+  --radius-sm: calc(var(--radius) * 0.6);
+  --radius-md: calc(var(--radius) * 0.8);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) * 1.4);
+  --radius-2xl: calc(var(--radius) * 1.8);
+  --radius-3xl: calc(var(--radius) * 2.2);
+  --radius-4xl: calc(var(--radius) * 2.6);
+}
+
+/* ============================================================
+   COLOR MODES
+   Light tokens live on :root, dark tokens on .dark (toggled on
+   <html> by lib/theme-context.tsx). Glass surfaces read the
+   --glass-* / --body-* tokens so both modes share one rule set.
+   ============================================================ */
+:root {
+  color-scheme: light;
+
+  /* Base */
+  --background: oklch(0.975 0.006 250);
+  --foreground: oklch(0.21 0.02 252);
+
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.21 0.02 252);
+
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.21 0.02 252);
+
+  /* Primary — emerald, darker than dark mode for contrast on white */
+  --primary: oklch(0.6 0.16 162);
+  --primary-foreground: oklch(0.99 0.01 162);
+
+  --secondary: oklch(0.95 0.008 252);
+  --secondary-foreground: oklch(0.25 0.02 252);
+
+  --muted: oklch(0.955 0.006 252);
+  --muted-foreground: oklch(0.5 0.02 252);
+
+  --accent: oklch(0.94 0.02 210);
+  --accent-foreground: oklch(0.22 0.02 252);
+
+  --destructive: oklch(0.58 0.22 25);
+
+  --border: oklch(0.21 0.02 252 / 0.1);
+  --input: oklch(0.21 0.02 252 / 0.15);
+  --ring: oklch(0.6 0.16 162 / 0.5);
+
+  --chart-1: oklch(0.6 0.16 162);
+  --chart-2: oklch(0.58 0.15 200);
+  --chart-3: oklch(0.55 0.17 260);
+  --chart-4: oklch(0.7 0.17 55);
+  --chart-5: oklch(0.58 0.22 25);
+
+  --radius: 0.75rem;
+
+  --sidebar: oklch(0.99 0.004 250);
+  --sidebar-foreground: oklch(0.21 0.02 252);
+  --sidebar-primary: oklch(0.6 0.16 162);
+  --sidebar-primary-foreground: oklch(0.99 0.01 162);
+  --sidebar-accent: oklch(0.95 0.008 252);
+  --sidebar-accent-foreground: oklch(0.25 0.02 252);
+  --sidebar-border: oklch(0.21 0.02 252 / 0.08);
+  --sidebar-ring: oklch(0.6 0.16 162 / 0.4);
+
+  /* Ambient background glow orbs — softer on a light canvas */
+  --glow-1: oklch(0.75 0.15 162 / 0.22);
+  --glow-2: oklch(0.7 0.14 270 / 0.16);
+  --glow-3: oklch(0.75 0.12 210 / 0.16);
+  --glow-4: oklch(0.72 0.12 300 / 0.1);
+
+  /* Glass surfaces */
+  --body-bg: oklch(0.97 0.008 250);
+  --glass-card-bg: oklch(1 0 0 / 0.72);
+  --glass-card-border: oklch(0.21 0.02 252 / 0.08);
+  --glass-card-shadow:
+    0 0 0 1px oklch(1 0 0 / 0.6) inset,
+    0 8px 32px oklch(0.3 0.03 252 / 0.08),
+    0 2px 6px oklch(0.3 0.03 252 / 0.06);
+  --glass-popover-bg: oklch(1 0 0 / 0.92);
+  --glass-popover-border: oklch(0.21 0.02 252 / 0.1);
+  --glass-popover-shadow:
+    0 0 0 1px oklch(1 0 0 / 0.6) inset,
+    0 12px 48px oklch(0.3 0.03 252 / 0.16);
+  --glass-aside-bg: oklch(1 0 0 / 0.75);
+  --glass-aside-border: oklch(0.21 0.02 252 / 0.08);
+  --glass-input-bg: oklch(1 0 0 / 0.8);
+  --glass-input-border: oklch(0.21 0.02 252 / 0.15);
+  --scrollbar: oklch(0.21 0.02 252 / 0.15);
+  --scrollbar-hover: oklch(0.21 0.02 252 / 0.3);
+}
+
+.dark {
+  color-scheme: dark;
+
+  --background: oklch(0.1 0.018 252);
+  --foreground: oklch(0.94 0.005 240);
+
+  --card: oklch(0.145 0.018 252);
+  --card-foreground: oklch(0.94 0.005 240);
+
+  --popover: oklch(0.13 0.02 252);
+  --popover-foreground: oklch(0.94 0.005 240);
+
+  /* Primary — vibrant emerald */
+  --primary: oklch(0.72 0.19 162);
+  --primary-foreground: oklch(0.09 0.02 162);
+
+  --secondary: oklch(0.18 0.018 252);
+  --secondary-foreground: oklch(0.88 0.005 240);
+
+  --muted: oklch(0.155 0.015 252);
+  --muted-foreground: oklch(0.52 0.012 252);
+
+  /* Accent — teal */
+  --accent: oklch(0.19 0.022 210);
+  --accent-foreground: oklch(0.92 0.005 240);
+
+  --destructive: oklch(0.62 0.22 25);
+
+  /* Borders — hairline white glow */
+  --border: oklch(1 0 0 / 0.08);
+  --input: oklch(1 0 0 / 0.07);
+  --ring: oklch(0.72 0.19 162 / 0.5);
+
+  --chart-1: oklch(0.72 0.19 162);
+  --chart-2: oklch(0.68 0.17 200);
+  --chart-3: oklch(0.65 0.18 260);
+  --chart-4: oklch(0.78 0.18 55);
+  --chart-5: oklch(0.62 0.22 25);
+
+  --sidebar: oklch(0.115 0.018 252);
+  --sidebar-foreground: oklch(0.94 0.005 240);
+  --sidebar-primary: oklch(0.72 0.19 162);
+  --sidebar-primary-foreground: oklch(0.09 0.02 162);
+  --sidebar-accent: oklch(0.17 0.018 252);
+  --sidebar-accent-foreground: oklch(0.9 0.005 240);
+  --sidebar-border: oklch(1 0 0 / 0.06);
+  --sidebar-ring: oklch(0.72 0.19 162 / 0.4);
+
+  --glow-1: oklch(0.55 0.22 162 / 0.28);
+  --glow-2: oklch(0.45 0.2 270 / 0.22);
+  --glow-3: oklch(0.5 0.18 210 / 0.18);
+  --glow-4: oklch(0.48 0.16 300 / 0.12);
+
+  --body-bg: oklch(0.09 0.02 252);
+  --glass-card-bg: oklch(0.14 0.02 252 / 0.55);
+  --glass-card-border: oklch(1 0 0 / 0.1);
+  --glass-card-shadow:
+    0 0 0 1px oklch(1 0 0 / 0.05) inset,
+    0 8px 32px oklch(0 0 0 / 0.45),
+    0 2px 6px oklch(0 0 0 / 0.3);
+  --glass-popover-bg: oklch(0.12 0.022 252 / 0.85);
+  --glass-popover-border: oklch(1 0 0 / 0.12);
+  --glass-popover-shadow:
+    0 0 0 1px oklch(1 0 0 / 0.06) inset,
+    0 12px 48px oklch(0 0 0 / 0.6);
+  --glass-aside-bg: oklch(0.1 0.02 252 / 0.7);
+  --glass-aside-border: oklch(1 0 0 / 0.08);
+  --glass-input-bg: oklch(0.11 0.018 252 / 0.65);
+  --glass-input-border: oklch(1 0 0 / 0.1);
+  --scrollbar: oklch(1 0 0 / 0.12);
+  --scrollbar-hover: oklch(1 0 0 / 0.22);
+}
+
+/* ============================================================
+   ACCENT THEME VARIANTS
+   Set via [data-theme="..."] on <html> (see lib/theme-context.tsx).
+   Emerald is the default and needs no override block. The plain
+   selector carries the dark values; :not(.dark) re-tunes them for
+   light mode.
+   ============================================================ */
+[data-theme="purple"] {
+  --primary: oklch(0.68 0.22 300);
+  --primary-foreground: oklch(0.97 0.01 300);
+  --ring: oklch(0.68 0.22 300 / 0.5);
+  --chart-1: oklch(0.68 0.22 300);
+  --chart-2: oklch(0.62 0.2 280);
+  --chart-3: oklch(0.7 0.19 320);
+  --chart-4: oklch(0.75 0.18 260);
+  --chart-5: oklch(0.6 0.22 340);
+  --sidebar-primary: oklch(0.68 0.22 300);
+  --sidebar-primary-foreground: oklch(0.09 0.02 300);
+  --sidebar-ring: oklch(0.68 0.22 300 / 0.4);
+  --glow-1: oklch(0.55 0.24 300 / 0.28);
+  --glow-2: oklch(0.5 0.22 330 / 0.22);
+  --glow-3: oklch(0.55 0.2 270 / 0.18);
+  --glow-4: oklch(0.5 0.18 250 / 0.12);
+}
+
+[data-theme="purple"]:not(.dark) {
+  --primary: oklch(0.56 0.22 300);
+  --ring: oklch(0.56 0.22 300 / 0.5);
+  --chart-1: oklch(0.56 0.22 300);
+  --sidebar-primary: oklch(0.56 0.22 300);
+  --sidebar-primary-foreground: oklch(0.98 0.01 300);
+  --sidebar-ring: oklch(0.56 0.22 300 / 0.4);
+  --glow-1: oklch(0.75 0.16 300 / 0.22);
+  --glow-2: oklch(0.72 0.15 330 / 0.16);
+  --glow-3: oklch(0.75 0.13 270 / 0.16);
+  --glow-4: oklch(0.72 0.12 250 / 0.1);
+}
+
+[data-theme="rose"] {
+  --primary: oklch(0.68 0.21 18);
+  --primary-foreground: oklch(0.97 0.01 18);
+  --ring: oklch(0.68 0.21 18 / 0.5);
+  --chart-1: oklch(0.68 0.21 18);
+  --chart-2: oklch(0.65 0.19 35);
+  --chart-3: oklch(0.62 0.2 5);
+  --chart-4: oklch(0.75 0.17 50);
+  --chart-5: oklch(0.6 0.22 350);
+  --sidebar-primary: oklch(0.68 0.21 18);
+  --sidebar-primary-foreground: oklch(0.09 0.02 18);
+  --sidebar-ring: oklch(0.68 0.21 18 / 0.4);
+  --glow-1: oklch(0.55 0.22 18 / 0.28);
+  --glow-2: oklch(0.5 0.2 350 / 0.22);
+  --glow-3: oklch(0.55 0.18 35 / 0.18);
+  --glow-4: oklch(0.5 0.16 0 / 0.12);
+}
+
+[data-theme="rose"]:not(.dark) {
+  --primary: oklch(0.58 0.21 18);
+  --ring: oklch(0.58 0.21 18 / 0.5);
+  --chart-1: oklch(0.58 0.21 18);
+  --sidebar-primary: oklch(0.58 0.21 18);
+  --sidebar-primary-foreground: oklch(0.98 0.01 18);
+  --sidebar-ring: oklch(0.58 0.21 18 / 0.4);
+  --glow-1: oklch(0.78 0.14 18 / 0.22);
+  --glow-2: oklch(0.75 0.13 350 / 0.16);
+  --glow-3: oklch(0.78 0.12 35 / 0.16);
+  --glow-4: oklch(0.75 0.1 0 / 0.1);
+}
+
+/* ============================================================
+   BASE LAYER
+   ============================================================ */
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+
+  html {
+    @apply font-sans;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  body {
+    @apply text-foreground;
+    background-color: var(--body-bg);
+    /* Ambient gradient orbs — visible enough to bleed through glass cards */
+    background-image:
+      radial-gradient(ellipse 55% 45% at 10% 5%,  var(--glow-1) 0%, transparent 60%),
+      radial-gradient(ellipse 45% 40% at 90% 90%, var(--glow-2) 0%, transparent 60%),
+      radial-gradient(ellipse 35% 30% at 75% 8%,  var(--glow-3) 0%, transparent 55%),
+      radial-gradient(ellipse 30% 25% at 30% 80%, var(--glow-4) 0%, transparent 50%);
+    min-height: 100dvh;
+  }
+
+  button:not(:disabled),
+  [role="button"]:not(:disabled) {
+    cursor: pointer;
+  }
+}
+
+/* ============================================================
+   GLASS SURFACES
+   ============================================================ */
+@layer utilities {
+  /* Glass cards — semi-transparent so orbs bleed through */
+  [data-slot="card"] {
+    background: var(--glass-card-bg) !important;
+    backdrop-filter: blur(20px) saturate(180%) brightness(1.05);
+    -webkit-backdrop-filter: blur(20px) saturate(180%) brightness(1.05);
+    border: 1px solid var(--glass-card-border) !important;
+    box-shadow: var(--glass-card-shadow);
+  }
+
+  /* Dropdown menus & popovers */
+  [data-slot="dropdown-menu-content"],
+  [data-slot="popover-content"],
+  [role="menu"],
+  [role="dialog"] {
+    background: var(--glass-popover-bg) !important;
+    backdrop-filter: blur(24px) saturate(200%);
+    -webkit-backdrop-filter: blur(24px) saturate(200%);
+    border: 1px solid var(--glass-popover-border) !important;
+    box-shadow: var(--glass-popover-shadow);
+  }
+
+  /* Sidebar glass */
+  aside {
+    background: var(--glass-aside-bg) !important;
+    backdrop-filter: blur(24px) saturate(170%);
+    -webkit-backdrop-filter: blur(24px) saturate(170%);
+    border-right: 1px solid var(--glass-aside-border) !important;
+  }
+
+  /* Primary button glow — follows the active accent */
+  [data-slot="button"][class*="bg-primary"]:not(:disabled) {
+    box-shadow:
+      0 0 20px color-mix(in oklch, var(--primary) 40%, transparent),
+      0 0 6px color-mix(in oklch, var(--primary) 25%, transparent);
+  }
+
+  /* Input glass */
+  input:not([type="checkbox"]):not([type="radio"]),
+  textarea,
+  select {
+    background: var(--glass-input-bg) !important;
+    border-color: var(--glass-input-border) !important;
+  }
+}
+
+/* ============================================================
+   SCROLLBAR
+   ============================================================ */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: var(--scrollbar);
+  border-radius: 99px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--scrollbar-hover);
+}
+
+/* ============================================================
+   SELECTION
+   ============================================================ */
+::selection {
+  background: color-mix(in oklch, var(--primary) 30%, transparent);
+  color: var(--foreground);
+}

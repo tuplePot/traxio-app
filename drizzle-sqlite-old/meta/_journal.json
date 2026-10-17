@@ -1,0 +1,69 @@
+{
+  "version": "7",
+  "dialect": "sqlite",
+  "entries": [
+    {
+      "idx": 0,
+      "version": "6",
+      "when": 1749859200000,
+      "tag": "0000_init",
+      "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "6",
+      "when": 1749945600000,
+      "tag": "0001_watchlist_meta",
+      "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "6",
+      "when": 1781423673930,
+      "tag": "0002_gray_cable",
+      "breakpoints": true
+    },
+    {
+      "idx": 3,
+      "version": "6",
+      "when": 1781437012963,
+      "tag": "0003_fine_puma",
+      "breakpoints": true
+    },
+    {
+      "idx": 4,
+      "version": "6",
+      "when": 1781442280416,
+      "tag": "0004_fat_christian_walker",
+      "breakpoints": true
+    },
+    {
+      "idx": 5,
+      "version": "6",
+      "when": 1781444050539,
+      "tag": "0005_needy_onslaught",
+      "breakpoints": true
+    },
+    {
+      "idx": 6,
+      "version": "6",
+      "when": 1792168015055,
+      "tag": "0006_bot_paper_trading",
+      "breakpoints": true
+    },
+    {
+      "idx": 7,
+      "version": "6",
+      "when": 1792203005025,
+      "tag": "0007_telegram",
+      "breakpoints": true
+    },
+    {
+      "idx": 8,
+      "version": "6",
+      "when": 1792212072687,
+      "tag": "0008_push_subscriptions",
+      "breakpoints": true
+    }
+  ]
+}

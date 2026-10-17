@@ -1,0 +1,38 @@
+{
+  "mcpServers": {
+    "shadcn": {
+      "command": "npx",
+      "args": ["shadcn@latest", "mcp"]
+    },
+    "tanstack-query-docs": {
+      "command": "npx",
+      "args": ["mcp-remote", "https://gitmcp.io/TanStack/query"]
+    },
+    "tanstack-router-docs": {
+      "command": "npx",
+      "args": ["mcp-remote", "https://gitmcp.io/TanStack/router"]
+    }
+  },
+  "react": {
+    "command": "cmd",
+    "args": ["/c", "npx", "mcp-remote", "https://gitmcp.io/facebook/react.dev"]
+  },
+  "tailwindcss": {
+    "command": "cmd",
+    "args": [
+      "/c",
+      "npx",
+      "mcp-remote",
+      "https://gitmcp.io/tailwindlabs/tailwindcss.com"
+    ]
+  },
+  "drizzle-orm": {
+    "command": "cmd",
+    "args": [
+      "/c",
+      "npx",
+      "mcp-remote",
+      "https://gitmcp.io/drizzle-team/drizzle-orm"
+    ]
+  }
+}
